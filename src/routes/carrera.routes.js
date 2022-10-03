@@ -1,6 +1,5 @@
 import { Router } from "express";
 import { methods as carreraController } from "./../controllers/carrera.controller";
-import { verifyToken } from "../middlewares/authJwt.js";
 
 const router = Router();
 

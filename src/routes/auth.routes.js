@@ -1,5 +1,9 @@
 import { Router } from "express";
 import { signinHandler } from "../controllers/auth.controller.js";
+const { ensureToken, validate } = require('../core/auth');
+import { methods as authController } from "./../controllers/auth.controller";
+
+
 
 const router = Router();
 
@@ -11,6 +15,8 @@ router.use((req, res, next) => {
   next();
 });
 
-router.post("/signin", signinHandler);
+router.post("/signin", authController.signinHandler);
+router.get("/validartoken", ensureToken, validate, authController.getValidarToken)
+
 
 export default router;
