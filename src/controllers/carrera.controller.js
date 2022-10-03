@@ -43,16 +43,16 @@ const addCarrera = async (req, res) => {
 
 const updateCarrera = async (req, res) => {
     try {
-        const { idCarrera } = req.params;
-        const { idCarrer, vueltas } = req.body;
+        const { id } = req.params;
+        const { idCarrera, vueltas } = req.body;
 
-        if (idCarrer === undefined || vueltas === undefined || idCarrera === undefined) {
-            res.status(400).json({ message: "Bad Request. Please fill all field." });
+        if (idCarrera === undefined || vueltas === undefined || id === undefined) {
+            res.status(400).json({ message: "Bad Request. Please fill all field" });
         }
 
-        const carrera = { idCarrer, vueltas };
+        const carrera = { idCarrera, vueltas };
         const connection = await getConnection();
-        const result = await connection.query("UPDATE Carrera SET ? WHERE id = ?", [carrera, idCarrera]);
+        const result = await connection.query("UPDATE Carrera SET ? WHERE idCarrera = ?", [carrera, id]);
         res.json(result);
     } catch (error) {
         res.status(500);
@@ -62,9 +62,9 @@ const updateCarrera = async (req, res) => {
 
 const deleteCarrera = async (req, res) => {
     try {
-        const { idCarrera } = req.params;
+        const { id } = req.params;
         const connection = await getConnection();
-        const result = await connection.query("DELETE FROM Carrera WHERE id = ?", idCarrera);
+        const result = await connection.query("DELETE FROM Carrera WHERE idCarrera = ?", id);
         res.json(result);
     } catch (error) {
         res.status(500);
