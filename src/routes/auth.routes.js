@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { signinHandler } from "../controllers/auth.controller.js";
 const { ensureToken, validate } = require('../core/auth');
 import { methods as authController } from "./../controllers/auth.controller";
 
