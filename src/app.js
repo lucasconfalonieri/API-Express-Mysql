@@ -2,6 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import carreraRoutes from "./routes/carrera.routes";
 import authRoutes from "./routes/auth.routes"
+import carreraEquipoRoutes from "./routes/carreraEquipo.routes"
 
 const app = express();
 var cors = require('cors');
@@ -15,6 +16,7 @@ app.use(cors());
 
 app.use("/api/carreras", carreraRoutes);
 app.use("/api/login", authRoutes)
+app.use("/api/carreraEquipos", carreraEquipoRoutes)
 
 export default app;
 
