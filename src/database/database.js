@@ -5,7 +5,9 @@ const connection = mysql.createConnection({
     host: config.host,
     database: config.database,
     user: config.user,
-    password: config.password
+    password: config.password,
+    //port: config.port,
+    //ssl:{ca:fs.readFileSync("{ca-cert DigiCertGlobalRootCA.crt (1).pem}")}
 });
 
 const getConnection = () => {
