@@ -11,7 +11,7 @@ const signinHandler = async (req, res) => {
     if (req.body.contraseña != userFound[0].contraseña)
       return res.status(401).json({
         token: null,
-        message: "Invalid Password",
+        message: "Contraseña incorrecta",
       });
 
     const token = jwt.sign({ id: userFound[0].idUsuario }, 'secretKey', {
